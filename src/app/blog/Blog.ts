@@ -1,12 +1,21 @@
 /**
  * @overview Blog feature.
  */
-import { Component } from '@angular/core';
+import { NgModule } from '@angular/core';
+import { RouterModule } from '@angular/router';
+import { CommonModule } from '@angular/common';
+import { ROUTES, ROUTING_COMPONENTS } from './Blog.routes';
 
-import template from './blog.html';
-
-@Component({
-  selector: 'blog',
-  template,
+@NgModule({
+  imports: [
+    CommonModule,
+    RouterModule.forChild(ROUTES),
+  ],
+  declarations: [
+    ROUTING_COMPONENTS,
+  ],
+  exports: [
+    RouterModule
+  ],    
 })
-export class BlogComponent {}
+export class BlogModule {}

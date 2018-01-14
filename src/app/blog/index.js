@@ -1,3 +1,3 @@
-import { BlogComponent } from './About';
+import { BlogModule } from './Blog';
 
-export default BlogComponent;
+export default BlogModule;
