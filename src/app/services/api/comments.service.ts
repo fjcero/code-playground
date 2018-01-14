@@ -41,8 +41,6 @@ export class CommentsService {
       content: comment.content
     }
 
-    console.log(comment)
-
     const headers = new Headers({ 'Content-Type': 'application/json' })
 
     return this._http.post(this.apiURL, JSON.stringify(payload), { headers })

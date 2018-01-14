@@ -21,11 +21,7 @@ export class BlogListComponent implements OnInit {
     this._apiPosts
       .getAll()
       .subscribe((posts) => {
-        this.posts = posts.sort((a: any, b: any) => {
-          let aDate = new Date(a.publish_date);
-          let bDate = new Date(b.publish_date);
-          return aDate > bDate ? -1 : aDate < bDate ? 1 : 0;
-        })
+        this.posts = posts
       })
   }
 }

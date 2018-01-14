@@ -15,19 +15,14 @@ export class PostsService {
   ) {}
 
   public getAll () {
-    return this._http.get(this.apiURL)
+    return this._http.get(`${this.apiURL}/?_sort=publish_date&_order=desc`)
       .map(this.buildResponse)
       .catch(this.handleError);
   }
 
   public getById (postId: number) {
-    return this._http.get(this.apiURL)
-      .map((res)=> {
-        return this
-          .buildResponse(res)
-          .filter((p: IPost) => p.id == postId)
-          .shift()
-      })
+    return this._http.get(`${this.apiURL}/${postId}`)
+      .map(this.buildResponse)
       .catch(this.handleError);
   }
 
