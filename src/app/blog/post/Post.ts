@@ -33,7 +33,6 @@ export class BlogPostComponent implements OnInit {
         if (post) {
           this.post = post
           this._apiComments.getByPostId(post.id).subscribe((comments) => {
-            console.log('comments', comments)
             this.comments = comments
           })
         } else {

@@ -5,7 +5,7 @@
   <div class="blog--post--content" [innerHtml]="post.content"></div>
 
   <comment-tree [comments]="comments"></comment-tree>
-  <add-comment-form></add-comment-form>
+  <add-comment-form [postId]="post.id"></add-comment-form>
 
   <a routerLink="/blog" class="back">< Back to blog</a>
 </div>

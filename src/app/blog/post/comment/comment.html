@@ -1,0 +1,13 @@
+<ul class="blog--post--comments" *ngIf="comments">
+  <li *ngFor="let comment of comments">
+    <div class="blog--post--comment">
+      <div class="blog--post--comment--content" [innerHtml]="comment.content"></div>
+      <div class="blog--post--comment--author">{{comment.user}}</div>
+      <div class="blog--post--comment--date">{{comment.date}}</div>
+    </div>
+
+    <add-comment-form [label]="'Reply comment'" [postId]="comment.post_id" [commentId]="comment.id"></add-comment-form>
+
+    <comment-tree [comments]="comment.children"></comment-tree>
+  </li>
+</ul>
