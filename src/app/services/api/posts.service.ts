@@ -20,6 +20,17 @@ export class PostsService {
       .catch(this.handleError);
   }
 
+  public getById (postId: number) {
+    return this._http.get(this.apiURL)
+      .map((res)=> {
+        return this
+          .buildResponse(res)
+          .filter((p: IPost) => p.id == postId)
+          .shift()
+      })
+      .catch(this.handleError);
+  }
+
   private buildResponse (res: Response) {
     return res.json();
   }
@@ -27,4 +38,14 @@ export class PostsService {
   private handleError (err: Response|any) {
     return Observable.throw(err.statusText)
   }
+}
+
+export interface IPost {
+  author: string,
+  content: string,
+  description: string,
+  id: number,
+  publish_date: string,
+  slug: string,
+  title: string
 }
