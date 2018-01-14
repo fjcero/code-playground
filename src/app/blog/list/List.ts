@@ -1,12 +1,28 @@
 /**
  * @overview Blog List page.
  */
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 import template from './list.html';
+import { PostsService } from '../posts.service'
 
 @Component({
   selector: 'blog-list',
   template,
 })
-export class BlogListComponent {}
+export class BlogListComponent implements OnInit {
+  public posts: any[] = []
+
+  constructor (
+    private _apiPosts: PostsService
+  ) {}
+
+  ngOnInit () {
+    this._apiPosts
+      .getAll()
+      .subscribe((posts) => {
+        this.posts = posts
+        console.log(posts)
+      })
+  }
+}

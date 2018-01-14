@@ -14,7 +14,7 @@ export const ROUTES: Routes = [
     component: BlogListComponent,
   },
   {
-    path: 'blog/:uid',
+    path: 'blog/:id',
     component: BlogPostComponent,
   }
 ];

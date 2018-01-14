@@ -1,1 +1,10 @@
-LIST
+<div class="blog--list">
+  <ul
+    class="blog--list--post"
+    *ngFor="let post of posts"
+  >
+    <li class="nav-item">
+      <a class="nav-link" routerLink="./{{post.id}}" routerLinkActive="active">{{post.title}}</a>
+    </li>
+  </ul>
+</div>

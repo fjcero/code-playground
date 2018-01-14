@@ -1,5 +1,6 @@
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
+import 'rxjs/add/observable/throw';
 
 import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
@@ -7,7 +8,7 @@ import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class PostsService {
-  private apiURL: string = `../../../api/db.json`;
+  private apiURL: string = `http://localhost:9001/posts`;
 
   constructor(
     private _http: Http
