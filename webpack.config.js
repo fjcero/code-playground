@@ -6,6 +6,7 @@
 
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+const TsConfigPathsPlugin = require('awesome-typescript-loader').TsConfigPathsPlugin;
 const webpack = require('webpack');
 const path = require('path');
 
@@ -130,6 +131,10 @@ const config = {
     extensions: [
       '.ts', '.tsx', '.js', '.jsx', '.json'
     ],
+
+    plugins: [
+      new TsConfigPathsPlugin(/* { tsconfig, compiler } */),
+    ]
   },
 
   // webpack-dev-server options:

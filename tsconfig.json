@@ -8,7 +8,7 @@
       "es2016"
     ],
     "types": [
-      "jasmine", 
+      "jasmine",
       "webpack-env"
     ],
     "jsx": "preserve",
@@ -25,7 +25,12 @@
     "skipLibCheck": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "allowUnreachableCode": true
+    "allowUnreachableCode": true,
+    "baseUrl": ".",
+    "paths": {
+      "<blog>/*": [ "src/app/blog/*" ],
+      "<services>/*": [ "src/app/services/*" ]
+    },
   },
-  "include": ["src/app/**/*.ts"]
+  "include": ["src/app/**/*.ts"],
 }
