@@ -5,6 +5,7 @@ import 'rxjs/add/observable/throw';
 import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
+import { IComment } from '<services>/api';
 
 @Injectable()
 export class PostsService {
@@ -24,6 +25,33 @@ export class PostsService {
     return this._http.get(`${this.apiURL}/${postId}`)
       .map(this.buildResponse)
       .catch(this.handleError);
+  }
+
+  public getCommentsByPostId (postId: number) {
+    return this._http.get(`${this.apiURL}/${postId}/comments`)
+      .map((res)=> {
+        let comments = this
+          .buildResponse(res)
+          .filter((c: IComment) => c.postId == postId)
+
+        return this.buildCommentsTree(comments)
+      })
+      .catch(this.handleError);
+  }
+
+  private buildCommentsTree (comments: IComment[], parent: number = null) {
+    let out = []
+    for(let c in comments) {
+      if(comments[c].parent_id == parent) {
+        let children = this.buildCommentsTree(comments, comments[c].id)
+
+        if(children.length) {
+          comments[c].children = children
+        }
+        out.push(comments[c])
+      }
+    }
+    return out
   }
 
   private buildResponse (res: Response) {
