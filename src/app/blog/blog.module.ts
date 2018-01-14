@@ -4,9 +4,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { HttpModule } from '@angular/http';
 import { ROUTES, ROUTING_COMPONENTS } from './blog.routes';
 import { CommentsService, PostsService } from '<services>/api';
-import { HttpModule } from '@angular/http';
+import { CommentComponent } from './post/comment/Comment';
+import { AddCommentComponent } from './post/add-comment/AddComment';
 
 @NgModule({
   imports: [
@@ -16,6 +18,8 @@ import { HttpModule } from '@angular/http';
   ],
   declarations: [
     ROUTING_COMPONENTS,
+    CommentComponent,
+    AddCommentComponent
   ],
   exports: [
     RouterModule
