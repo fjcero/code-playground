@@ -4,6 +4,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import {
+  CommentsService,
   IPost,
   IComment,
   PostsService,
@@ -21,7 +22,8 @@ export class BlogPostComponent implements OnInit {
   constructor (
     private _route: ActivatedRoute,
     private _router: Router,
-    private _apiPosts: PostsService
+    private _apiPosts: PostsService,
+    private _apiComments: CommentsService
   ) {}
 
   ngOnInit () {
@@ -30,7 +32,7 @@ export class BlogPostComponent implements OnInit {
       this._apiPosts.getById(postId).subscribe((post) => {
         if (post) {
           this.post = post
-          this._apiPosts.getCommentsByPostId(post.id).subscribe((comments) => {
+          this._apiComments.getByPostId(post.id).subscribe((comments) => {
             this.comments = comments
           })
         } else {
