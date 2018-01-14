@@ -7,12 +7,16 @@ import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { NavigationComponent } from './Navigation';
 import AboutComponent from './about';
+import BlogComponent from './blog';
 import HomeComponent from './home';
 
 const routing = RouterModule.forRoot([
   {
     path: 'about',
     component: AboutComponent
+  }, {
+    path: 'blog',
+    component: BlogComponent
   }, {
     path: 'home',
     component: HomeComponent
@@ -32,6 +36,7 @@ const routing = RouterModule.forRoot([
     AppComponent,
     NavigationComponent,
     AboutComponent,
+    BlogComponent,
     HomeComponent,
   ],
   bootstrap: [AppComponent]
