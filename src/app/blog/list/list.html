@@ -1,10 +1,13 @@
 <div class="blog--list">
   <ul
-    class="blog--list--post"
+    class="blog--list--posts"
     *ngFor="let post of posts"
-  >
-    <li class="nav-item">
-      <a class="nav-link" routerLink="./{{post.id}}" routerLinkActive="active">{{post.title}}</a>
+    >
+    <li class="blog--list--item">
+      <a class="blog--list--item--title" routerLink="./{{post.id}}" routerLinkActive="active">{{post.title}}</a>
+      <p class="blog--list--item--description"></p>{{post.description}}
+      <span class="blog--list--item--author">{{post.author}}</span>
+      <span class="blog--list--item--date">{{post.publish_date}}</span>
     </li>
   </ul>
 </div>

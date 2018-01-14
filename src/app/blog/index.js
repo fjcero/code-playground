@@ -1,3 +1,3 @@
-import { BlogModule } from './Blog';
+import { BlogModule } from './blog.module';
 
 export default BlogModule;

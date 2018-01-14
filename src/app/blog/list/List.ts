@@ -4,7 +4,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import template from './list.html';
-import { PostsService } from '../posts.service'
+import { PostsService } from '<services>/api';
 
 @Component({
   selector: 'blog-list',
@@ -21,8 +21,11 @@ export class BlogListComponent implements OnInit {
     this._apiPosts
       .getAll()
       .subscribe((posts) => {
-        this.posts = posts
-        console.log(posts)
+        this.posts = posts.sort((a: any, b: any) => {
+          let aDate = new Date(a.publish_date);
+          let bDate = new Date(b.publish_date);
+          return aDate > bDate ? -1 : aDate < bDate ? 1 : 0;
+        })
       })
   }
 }
