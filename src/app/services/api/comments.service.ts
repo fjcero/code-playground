@@ -25,8 +25,7 @@ export class CommentsService {
       .map((res)=> {
         return this
           .buildResponse(res)
-          .filter((c: IComment) => c.id == postId)
-          .shift()
+          .filter((c: IComment) => c.postId == postId)
       })
       .catch(this.handleError);
   }
