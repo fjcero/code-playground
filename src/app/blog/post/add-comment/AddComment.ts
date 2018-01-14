@@ -1,23 +1,40 @@
 import { Component, Input } from '@angular/core';
+import { CommentsService } from '<services>/api';
+import template from './add-comment.html';
 
 @Component({
   selector: 'add-comment-form',
-  template: `
-  <form class="blog--post--comment--new">
-    <div class="form-group">
-      <input type="text" placeholder="Your name">
-    </div>
-    <div class="form-group">
-      <textarea placeholder="What you are thinking?"></textarea>
-    </div>
-    <button type="submit" class="btn btn-primary">{{label}}</button>
-  </form>
-`
+  template
 })
 export class AddCommentComponent {
   @Input() label: string = 'Add comment';
   @Input() postId: number;
   @Input() commentId: number;
 
-  // TODO Save to Comments
+  public comment: any = {
+    user: '',
+    content: ''
+  }
+
+  constructor (
+    private _apiComments: CommentsService
+  ) {}
+
+  submit () {
+    const { user, content } = this.comment;
+
+    if (user && content) {
+      const comment = {
+        user,
+        content,
+        postId: this.postId,
+        parent_id: this.commentId,
+        date: new Date().toISOString().split('T')[0]
+      }
+
+      this._apiComments.saveComment(comment).subscribe((res) => {
+        console.log(res)
+      })
+    }
+  }
 }

@@ -6,7 +6,7 @@
       <div class="blog--post--comment--date">{{comment.date}}</div>
     </div>
 
-    <add-comment-form [label]="'Reply comment'" [postId]="comment.post_id" [commentId]="comment.id"></add-comment-form>
+    <add-comment-form [label]="'Reply comment'" [postId]="comment.postId" [commentId]="comment.id"></add-comment-form>
 
     <comment-tree [comments]="comment.children"></comment-tree>
   </li>

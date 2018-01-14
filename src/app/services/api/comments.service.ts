@@ -3,7 +3,7 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/observable/throw';
 
 import { Injectable } from '@angular/core';
-import { Http, Response } from '@angular/http';
+import { Http, Response, Headers } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 
 @Injectable()
@@ -32,6 +32,22 @@ export class CommentsService {
       .catch(this.handleError);
   }
 
+  public saveComment (comment: IComment) {
+    const payload = {
+      postId: comment.postId,
+      parent_id: comment.parent_id,
+      user: comment.user,
+      date: comment.date,
+      content: comment.content
+    }
+
+    console.log(comment)
+
+    const headers = new Headers({ 'Content-Type': 'application/json' })
+
+    return this._http.post(this.apiURL, JSON.stringify(payload), { headers })
+  }
+
   private buildResponse (res: Response) {
     return res.json();
   }
@@ -57,11 +73,11 @@ export class CommentsService {
 }
 
 export interface IComment {
-  id: number,
+  id?: number,
   postId: number,
   parent_id: number,
   user: string,
   date: string,
   content: string,
-  children: any[],
+  children?: any[],
 }
