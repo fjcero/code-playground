@@ -23,9 +23,11 @@ export class CommentsService {
   public getByPostId (postId: number) {
     return this._http.get(this.apiURL)
       .map((res)=> {
-        return this
+        let comments = this
           .buildResponse(res)
           .filter((c: IComment) => c.postId == postId)
+
+        return this.buildCommentsTree(comments)
       })
       .catch(this.handleError);
   }
@@ -37,6 +39,21 @@ export class CommentsService {
   private handleError (err: Response|any) {
     return Observable.throw(err.statusText)
   }
+
+  private buildCommentsTree (comments: IComment[], parent: number = null) {
+    let out = []
+    for(let c in comments) {
+      if(comments[c].parent_id == parent) {
+        let children = this.buildCommentsTree(comments, comments[c].id)
+
+        if(children.length) {
+          comments[c].children = children
+        }
+        out.push(comments[c])
+      }
+    }
+    return out
+  }
 }
 
 export interface IComment {
@@ -46,4 +63,5 @@ export interface IComment {
   user: string,
   date: string,
   content: string,
+  children: any[],
 }
