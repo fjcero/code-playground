@@ -1,0 +1,9 @@
+<form (ngSubmit)="submit()" class="blog--post--comment--new">
+  <div class="form-group">
+    <input name="user" type="text" placeholder="Your name" [(ngModel)]="comment.user" required>
+  </div>
+  <div class="form-group">
+    <textarea name="content" placeholder="What you are thinking?" [(ngModel)]="comment.content" required></textarea>
+  </div>
+  <button type="submit" class="btn btn-primary">{{label}}</button>
+</form>
