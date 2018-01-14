@@ -1,1 +1,6 @@
-POST
+<div class="blog--post" *ngIf="post">
+  <h3 class="blog--post--title">{{post.title}}</h3>
+  <span class="blog--post--author">{{post.author}}</span>
+  <span class="blog--post--date">{{post.publish_date}}</span>
+  <div class="blog--post--content" [innerHtml]="post.content"></div>
+</div>
