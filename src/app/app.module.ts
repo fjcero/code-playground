@@ -7,16 +7,16 @@ import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { NavigationComponent } from './Navigation';
 import AboutComponent from './about';
-import BlogComponent from './blog';
 import HomeComponent from './home';
+import BlogModule from './blog';
 
-const routing = RouterModule.forRoot([
+const ROUTES = RouterModule.forRoot([
   {
     path: 'about',
     component: AboutComponent
   }, {
     path: 'blog',
-    component: BlogComponent
+    loadChildren: './blog#BlogModule'
   }, {
     path: 'home',
     component: HomeComponent
@@ -30,13 +30,13 @@ const routing = RouterModule.forRoot([
 @NgModule({
   imports: [
     BrowserModule,
-    routing,
+    ROUTES,
+    BlogModule,
   ],
   declarations: [
     AppComponent,
     NavigationComponent,
     AboutComponent,
-    BlogComponent,
     HomeComponent,
   ],
   bootstrap: [AppComponent]
