@@ -31,10 +31,7 @@ export class CommentsService {
   public getByPostId (postId: number) {
     return this._http.get(`${this.apiURL}/posts/${postId}/comments`)
       .map((res)=> {
-        let comments = this
-          .buildResponse(res)
-          .filter((c: IComment) => c.postId == postId)
-
+        let comments = this.buildResponse(res)
         return this.buildCommentsTree(comments)
       })
       .catch(this.handleError);
@@ -67,9 +64,9 @@ export class CommentsService {
 export interface IComment {
   id?: number,
   postId: number,
-  parent_id: number,
+  parent_id: number|null,
   user: string,
   date: string,
   content: string,
-  children?: any[],
+  children?: IComment[],
 }
