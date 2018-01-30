@@ -1,0 +1,71 @@
+@import '_variables';
+
+.product {
+  transition: all 100ms ease-in-out 0s;
+  border-radius: 3px;
+  box-shadow: 0 1px 3px -1px rgba(0,0,0,0.15);
+  background-color: white;
+  padding: 15px;
+  margin: 15px 0;
+  position: relative;
+  min-height: 230px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &:hover {
+    background-color: rgba(0,0,0,0.01)
+  }
+
+  .product--face {
+    text-align: center;
+  }
+  .product--date {
+    text-align: center;
+    font-size: 0.65;
+    color: #AAA;
+    padding: 8px 0;
+    position: absolute;
+    bottom: 0;
+  }
+  .product--price {
+    position: absolute;
+    top: 25px;
+    right: 0;
+    background-color: $blue;
+    color: white;
+    font-weight: 500;
+    padding: 6px 12px;
+
+    &:before {
+      border-right: 13px solid $blue;
+      border-top: 18px solid transparent;
+      border-bottom: 18px solid transparent;
+      content: "";
+      height: 0;
+      left: -13px;
+      position: absolute;
+      top: 0px;
+      width: 0;
+    }
+  }
+}
+
+.grid--end {
+  text-align: center;
+  color: #777;
+  font-size: 1.8rem;
+  line-height: 1.8rem;
+  padding: 50px 0;
+
+  .grid--end--star {
+    display: inline-block;
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    background-color: #777;
+    color: $bg_color;
+    line-height: 28px;
+    margin: 0 25px;
+  }
+}
