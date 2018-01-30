@@ -1,5 +1,4 @@
-# Telnyx starter kit
-> Boilerplate web application for Telnyx take-home code challenge
+# Blog Env
 
 ## Getting started
 
@@ -85,9 +84,3 @@ interface Comment {
   "content": String;        // Comment content
 }
 ```
-
-## Delivering to Telnyx
-
-You may create a Git repo, or zip up this entire directly and deliver the source code to Telnyx.  Ensure that extraneous folders, eg. `/node_modules`, are not included in the zip file.  If you've initialized Git in this directory locally, you may use [git clean](https://git-scm.com/docs/git-clean) to remove uncommitted and ignored files before compressing the project.  Including version control is strongly encouraged.
-
-**Thank you, and have fun!**
