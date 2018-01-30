@@ -1,0 +1,56 @@
+@import '_variables';
+
+spinner {
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  background: $bg_color;
+}
+
+.spinner {
+  position: relative;
+  padding: 30px 0 45px;
+}
+
+.spinner--container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+$animation_speed: 1000ms;
+$dot_color: #247BDF;
+
+@mixin animation($delay: 0ms) {
+  animation: fx $animation_speed ease infinite $delay;
+}
+
+.dot {
+  $dot_size: 10px;
+  width: $dot_size;
+  height: $dot_size;
+  border: ($dot_size / 5) solid $dot_color;
+  border-radius: 50%;
+  float: left;
+  margin: 0 ($dot_size / 2);
+  transform: scale(0);
+  @include animation();
+  &:nth-child(2) {
+    @include animation($animation_speed * 0.3);
+  }
+  &:nth-child(3) {
+    @include animation($animation_speed * 0.6);
+  }
+}
+
+@keyframes fx {
+  50% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}

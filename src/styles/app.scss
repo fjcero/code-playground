@@ -1,0 +1,32 @@
+@import '_variables';
+
+body {
+  background: $bg_color;
+  font-family: -apple-system, ".SFNSText-Regular", "San Francisco", Roboto, "Segoe UI", "Helvetica Neue", "Lucida Grande", sans-serif;
+}
+
+nav.navbar {
+  // background: linear-gradient(45deg, #FF8E8E, #F5A94C, #E0C15B);
+  background-color: $green;
+  color: white;
+  text-align: center;
+  text-shadow: 0 1px 0 rgba(255,255,255,0.2);
+  font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  font-size: 2.2rem;
+  font-weight: 600;
+  border-bottom: 2px solid rgba(0,0,0,0.15);
+  border-radius: 0;
+  padding: 1.2rem 1rem;
+
+  .navbar-brand {
+    code {
+      color: white;
+    }
+  }
+}
+
+.avatar {
+  color: $blue;
+  padding-top: .425rem;
+  padding-bottom: .425rem;
+}
